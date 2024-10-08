@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 int check_palindrome(char string[], int size);
 int string_length(char *string);
@@ -21,10 +22,10 @@ int main(){
 
   int palidrome = check_palindrome(string, length);
 
-  if(palidrome == 0){
-    printf("la frase risulta palidrome");
-  } else{
+  if(palidrome){
     printf("la frase non risulta palidrome");
+  } else{
+    printf("la frase risulta palidrome");
   }
 
   free(string);
@@ -47,11 +48,11 @@ int check_palindrome(char string[], int size){
     char current = string[i];
     char reverse = string[len - 1 - i];
     if(current != reverse){
-      return 1;
+      return true;
       break;
     } 
   }
-  return 0; 
+  return false; 
 }
 
 int clear_and_get_spaces(char string[], int len){
