@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
   FILE *pF = fopen("ascii.txt", "w");
 
   char Chars[] =
-      "`^\",:;I1!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+    "`^\",:;I1!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
   int CharsLen = strlen(Chars);
 
   int Width, Height, PixelSize;
