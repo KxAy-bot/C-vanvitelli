@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
         fprintf(pF, "%c", Chars[CharIndex]);
       }
       fprintf(pF, "\n");
-    }      
+    }
 
   } else {
     printf("Failed to load image %s\n", argv[1]);
