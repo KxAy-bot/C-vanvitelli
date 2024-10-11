@@ -40,6 +40,7 @@ int main() {
     else 
     {
       steps = -1;
+      break;
     }
     steps++;
   }
