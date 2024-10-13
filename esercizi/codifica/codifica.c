@@ -10,7 +10,7 @@ int *n_to_arr(int n, int *size);
 
 int main(int argc, char *argv[]) {
   if (argc < 3) {
-    printf("Non hai inserito alcun argomento");
+    printf("Non hai inserito abbastanza argomenti");
     exit(1);
   }
 
