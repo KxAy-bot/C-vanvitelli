@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MAX 100
 
-// FATTO PROGRAMMANDO UNA SORTA DI HASHMAP, VOLEVO UNA SOLUZIONE PIU SIMPATICA.
+// FATTO PROGRAMMANDO UNA SORTA DI HASHMAP, VOLEVO UNA SOLUZIONE PIU SIMPATICA :) .
 //
 //
 // Realizzare un sottoprogramma che data una stringa ne crei una seconda che
