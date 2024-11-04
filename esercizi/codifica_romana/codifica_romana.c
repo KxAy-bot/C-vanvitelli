@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct {
+  char key;
+  int value;
+} Map;
+
+int linear_search(Map *Map, size_t size, const char key);
 int romanToInt(char *s);
 
 int main() {
@@ -23,11 +29,6 @@ int main() {
   printf("%d", romanToInt(roman));
   return 0;
 }
-
-typedef struct {
-  char key;
-  int value;
-} Map;
 
 int linear_search(Map *Map, size_t size, const char key) {
   for (size_t i = 0; i < size; i++) {
