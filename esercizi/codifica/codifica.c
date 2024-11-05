@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int codifica_binaria_decimale(int vBinario[], int base, int size);
-int calcola_byte(int n);
 int *codifica_decimale_binaria(int n, int *size);
+int calcola_byte(int n);
+int codifica_binaria_decimale(int vBinario[], int base, int size);
 void print_array(int *array, int size);
 int *n_to_arr(int n, int *size);
 
