@@ -5,12 +5,12 @@
 int reverse(int x);
 
 int main() {
-    int num;
-    printf("Inserisci il numero: ");
-    scanf("%d", &num);
+  int num;
+  printf("Inserisci il numero: ");
+  scanf("%d", &num);
 
-    printf("%d\n", reverse(num));
-    return 0;
+  printf("%d\n", reverse(num));
+  return 0;
 }
 
 int reverse(int x) {

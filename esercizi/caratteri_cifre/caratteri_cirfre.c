@@ -38,6 +38,7 @@ void add(Map *Map, char key, int size) {
   }
 }
 
+
 void strcifre(char *s1, char *s2) {
   int len = slen(s1);
   Map Map[len];
