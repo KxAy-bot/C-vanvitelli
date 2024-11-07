@@ -51,7 +51,7 @@ int romanToInt(char *s) {
     int current = linear_search(romanTable, size, s[i]);
     int next = linear_search(romanTable, size, s[i + 1]);
 
-    // printf("current: %d, next: %d\n\n", current, next);
+    /*printf("current: %d, next: %d\n\n", current, next);*/
 
     if (current < next && next != -1 && current != 0) {
       res += (next - current);
