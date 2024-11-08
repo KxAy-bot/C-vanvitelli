@@ -24,5 +24,6 @@ int strStr(char *haystack, char *needle) {
     left++;
     right++;
   }
+
   return -1;
 }
