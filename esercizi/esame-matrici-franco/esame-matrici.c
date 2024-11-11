@@ -2,12 +2,11 @@
 #include <stdlib.h>
 
 #define MAX 100
-#define N_MAX 100
 
 typedef struct {
     int indice;
     int n;
-    int valori[N_MAX];
+    int valori[MAX];
     float nmass;
 } MatrixStruct;
 
