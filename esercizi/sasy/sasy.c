@@ -4,6 +4,7 @@
 
 void sortH(int matrix[nMax][nMax], int dimensione);
 void sortV(int matrix[nMax][nMax], int dimensione);
+void check_is_ordered(int matrix[nMax][nMax], int dimensione);
 
 void print_matrix(int matrix[nMax][nMax], int dimensione){
   printf("{");
@@ -47,6 +48,24 @@ int main() {
   }
 
   return 0;
+}
+
+void check_is_ordered(int matrix[nMax][nMax], int dimensione){
+  int is_ordered = 1;
+  for(int i = 0; i < dimensione; i++){
+    for(int j = 0; j < dimensione - 1;j ++){
+      for(int k = 0; k < dimensione - 1; k++){
+        if(matrix[i][k] > matrix[i][k + 1]){
+          is_ordered = 0;
+        }
+      }
+    }
+  }
+  if(is_ordered){
+    printf("La matrice è ordinata\n");
+  }else{
+    printf("La matrice non è ordinata\n");
+  }
 }
 
 void sortH(int matrix[nMax][nMax], int dimensione){
