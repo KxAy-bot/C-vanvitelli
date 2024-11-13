@@ -19,7 +19,7 @@ void printStruct(Mystruct* vettore, int size){
   }
 }
 
-int readTextFile(char* string){
+int readTextFile(char** string){
   FILE *fptr = fopen("input.txt", "rb");
 
   if(fptr == NULL){
@@ -27,7 +27,19 @@ int readTextFile(char* string){
     return -1;
   }
 
-  fread(string, sizeof(char), MAX, fptr);
+  fseek(fptr, 0, SEEK_END);
+  long fileSize = ftell(fptr);
+  fseek(fptr, 0, SEEK_SET);
+
+  *string = (char*)malloc(fileSize + 1);
+  if (*string == NULL) {
+    printf("Errore durante l'allocazione della memoria");
+    fclose(fptr);
+    return -1;
+  }
+
+  fread(*string, sizeof(char), fileSize, fptr);
+  (*string)[fileSize] = '\0';
   fclose(fptr);
   return 0;
 }
@@ -36,7 +48,7 @@ void saveStruct(Mystruct* vettore, int size){
   FILE *fptr = fopen("output.bin", "wb");
 
   if(fptr == NULL){
-    printf("Errore durante la scrittura del file binario (tha supreme nudo)");
+    printf("Errore durante la scrittura del file binario");
     return;
   }
 
@@ -93,16 +105,12 @@ void textParser(char* string, const char* delimiter, Mystruct* vettore, int* siz
   char* tok = strtok(string, delimiter);
 
   while(tok != NULL){
-    /*printf("%d)\t%s\n", index, tok);*/
-    /*printf("caratteri frase %d: %d\n\n", index, countCharacters(tok));*/
-    /*printf("parole frase %d: %d\n\n", index, countWords(tok));*/
     words = countWords(tok);
     chars = countCharacters(tok);
     bufWords += words;
     bufChars += chars;
     meanc = (float)bufChars / (float)(index + 1);
     meanw = (float)bufWords / (float)(index + 1);
-    /*printf("Index %d: words: %d, chars: %d, meanc: %.2lf, meanw: %.2lf", index, words, chars, meanc, meanw);*/
     tok = strtok(NULL, delimiter);
 
     fillStruct(vettore, index, chars, words, meanc, meanw);
@@ -114,10 +122,10 @@ void textParser(char* string, const char* delimiter, Mystruct* vettore, int* siz
 
 int main(){
   int size = 0;
-  char string[MAX];
+  char* string = NULL;
   Mystruct vettore[N_MAX];
 
-  if(readTextFile(string) == -1){
+  if(readTextFile(&string) == -1){
     return -1;
   }
 
@@ -129,5 +137,6 @@ int main(){
 
   saveStruct(vettore, size);
 
+  free(string);
   return 0;
 }
