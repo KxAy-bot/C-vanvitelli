@@ -31,6 +31,7 @@ int main(){
   fillStruct(&vec, matrix, nRows, nCols, &size);
   printStruct(vec, size);
 
+  free(vec);
   return 0;
 }
 
