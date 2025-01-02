@@ -21,8 +21,8 @@ void fillStruct(MyStruct **vettore, int *dim, Convertitore *tabella,
 void setVet(MyStruct *vettore, int index, int numero, int somma_riga,
             int numero_occorrenze_1);
 void printVet(MyStruct *vettore, int dim);
-void reoderVet(MyStruct* vettore, int dim);
-void saveToFile(MyStruct* vettore, int dim, const char* filename);
+void reoderVet(MyStruct *vettore, int dim);
+void saveToFile(MyStruct *vettore, int dim, const char *filename);
 
 int main() {
   Convertitore tabella[] = {
@@ -102,10 +102,10 @@ void printVet(MyStruct *vettore, int dim) {
   }
 }
 
-void reoderVet(MyStruct* vettore, int dim){
-  for(int i = 0; i < dim - 1; i++){
-    for(int j = i + 1; j < dim; j++){
-      if(vettore[i].numero < vettore[j].numero){
+void reoderVet(MyStruct *vettore, int dim) {
+  for (int i = 0; i < dim - 1; i++) {
+    for (int j = i + 1; j < dim; j++) {
+      if (vettore[i].numero < vettore[j].numero) {
         MyStruct temp = vettore[i];
         vettore[i] = vettore[j];
         vettore[j] = temp;
@@ -114,10 +114,10 @@ void reoderVet(MyStruct* vettore, int dim){
   }
 }
 
-void saveToFile(MyStruct* vettore, int dim, const char* filename){
-  FILE* output = fopen(filename, "wb");
+void saveToFile(MyStruct *vettore, int dim, const char *filename) {
+  FILE *output = fopen(filename, "wb");
 
-  if(output == NULL){
+  if (output == NULL) {
     printf("errore durante scrittura file binario");
     exit(-1);
   }

@@ -93,6 +93,6 @@ void findIndex(char* line, char* token, int tokens[nMax][2], int n){
 
 void printStruct(MyStruct* vec, int size){
   for(int i = 0; i < size; i++){
-    printf("{%s, %d, [%d %d], [%s]", vec[i].line, vec[i].n, vec[i].tokens[0][0], vec[i].tokens[0][1], vec[i].dels);
+    printf("{%s, %d, [%d %d], [%s]}", vec[i].line, vec[i].n, vec[i].tokens[0][0], vec[i].tokens[0][1], vec[i].dels);
   }
 }
