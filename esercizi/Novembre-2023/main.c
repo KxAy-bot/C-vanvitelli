@@ -18,6 +18,7 @@ int findValue(char* string);
 void printStruct(MyStruct* vec, int dim);
 void orderStruct(MyStruct* vec, int dim);
 void saveToBin(MyStruct* vec, int dim);
+void readFromBin(MyStruct** vec, int* dim, const char* filename);
 
 int main(){
   MyStruct* vec = malloc(sizeof(MyStruct));
@@ -61,6 +62,7 @@ void fillStruct(MyStruct** vec, int* dim, const char* filename){
     }
 
     linea++;
+    free(copy);
   }
   (*dim) = index;
 
@@ -118,7 +120,7 @@ void orderStruct(MyStruct* vec, int dim){
 }
 
 void saveToBin(MyStruct* vec, int dim){
-  FILE *output = fopen("output.bin", "w");
+  FILE *output = fopen("output.bin", "wb");
   
   if(output == NULL){
     printf("Hai sborrato nel puzzo");
@@ -128,4 +130,28 @@ void saveToBin(MyStruct* vec, int dim){
   fwrite(vec, sizeof(MyStruct), dim, output);
 
   fclose(output);
+}
+
+void readFromBin(MyStruct** vec, int* dim, const char* filename) {
+  FILE* input = fopen(filename, "rb");
+  if (input == NULL) {
+    printf("Errore: impossibile aprire il file binario per la lettura.\n");
+    exit(1);
+  }
+
+  fseek(input, 0, SEEK_END);
+  long fileSize = ftell(input);
+  rewind(input);
+
+  *dim = fileSize / sizeof(MyStruct);
+  *vec = malloc(fileSize);
+  if (*vec == NULL) {
+    printf("Errore: memoria insufficiente per leggere il file binario.\n");
+    fclose(input);
+    exit(1);
+  }
+
+  fread(*vec, sizeof(MyStruct), *dim, input);
+
+  fclose(input);
 }
