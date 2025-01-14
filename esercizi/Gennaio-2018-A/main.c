@@ -22,6 +22,7 @@ void fillStruct(MyStruct** vec, int* vecDim, char* string, int len);
 void deleteDupes(char* string);
 void shiftString(char* string, int index, int* len);
 void printStruct(MyStruct* vec, int vecDim);
+void saveToBin(MyStruct* vec, int dim, const char* filename);
 
 int main() {
   char* string = NULL;
@@ -208,4 +209,16 @@ void printStruct(MyStruct* vec, int vecDim) {
     }
     printf("]}\n");
   }
+}
+
+void saveToBin(MyStruct* vec, int dim, const char* filename){
+  FILE *output = fopen(filename, "wb");
+
+  if (output == NULL) {
+    exit(1);
+  }
+
+  fwrite(vec, sizeof(MyStruct), dim, output);
+
+  fclose(output);
 }
